@@ -6,7 +6,7 @@ from users.models import User
 class Tag(models.Model):
     name = models.CharField(
         verbose_name='Название',
-        max_length=200,
+        max_length=20,
         unique=True
     )
     color = models.CharField(
@@ -17,7 +17,7 @@ class Tag(models.Model):
     )
     slug = models.SlugField(
         verbose_name='Слаг',
-        max_length=200,
+        max_length=20,
         null=True,
         unique=True
     )
@@ -34,11 +34,11 @@ class Tag(models.Model):
 class Ingredient(models.Model):
     name = models.CharField(
         verbose_name='Название',
-        max_length=200,
+        max_length=100,
     )
     measurement_unit = models.CharField(
         verbose_name='Единица измерения',
-        max_length=200,
+        max_length=10,
     )
 
     class Meta:
@@ -87,7 +87,7 @@ class Recipe(models.Model):
     text = models.TextField(
         verbose_name='Описание рецепта'
     )
-    cooking_time = models.IntegerField(
+    cooking_time = models.PositiveSmallIntegerField(
         verbose_name='Время приготовления, мин'
     )
     pub_date = models.DateTimeField(
@@ -123,7 +123,7 @@ class IngredientInRecipe(models.Model):
         related_name='ingredients_in_recipe',
         verbose_name='Ингредиент'
     )
-    amount = models.IntegerField(
+    amount = models.PositiveSmallIntegerField(
         verbose_name='Количество'
     )
 
