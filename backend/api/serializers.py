@@ -102,13 +102,18 @@ class RecipeMinifiedSerializer(ModelSerializer):
         read_only_fields = ('name', 'image', 'cooking_time')
 
     def validate(self, data):
-        request = self.context.get('request')
-        user = request.user
-        if ('shopping_cart' in request.path and
-            user.shopping_cart.filter(recipe=self.instance).exists()):
+        action = self.context.get('action')
+        user = self.context.get('request').user
+        recipe = self.instance
+        if (
+            action == 'shopping_cart' and
+            user.shopping_cart.filter(recipe=recipe).exists()
+        ):
             raise ValidationError({'errors': 'Рецепт уже есть в корзине'})
-        if ('favorite' in request.path and
-            user.favorite.filter(recipe=self.instance).exists()):
+        if (
+            action == 'favorite' and
+            user.favorite.filter(recipe=recipe).exists()
+        ):
             raise ValidationError({'errors': 'Рецепт уже есть в избранном'})
         return data
 
