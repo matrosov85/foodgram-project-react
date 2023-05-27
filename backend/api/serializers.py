@@ -1,3 +1,4 @@
+from django.conf import settings
 from rest_framework.exceptions import ValidationError
 from rest_framework.serializers import (
     ModelSerializer, PrimaryKeyRelatedField, SerializerMethodField
@@ -5,7 +6,6 @@ from rest_framework.serializers import (
 from djoser.serializers import UserSerializer, UserCreateSerializer
 from drf_extra_fields.fields import Base64ImageField
 
-from config.settings import LIMIT_QUERY_PARAM
 from recipes.models import Tag, Ingredient, Recipe, IngredientInRecipe
 from users.models import User
 
@@ -48,7 +48,7 @@ class SubscriptionSerializer(CustomUserSerializer):
     def get_recipes(self, author):
         queryset = author.recipes.all()
         request = self.context.get('request')
-        recipes_limit = request.query_params.get(LIMIT_QUERY_PARAM)
+        recipes_limit = request.query_params.get(settings.LIMIT_QUERY_PARAM)
         if recipes_limit:
             queryset = queryset[:int(recipes_limit)]
         serializer = RecipeMinifiedSerializer(queryset, many=True)
@@ -170,7 +170,8 @@ class RecipeSerializer(RecipeReadSerializer):
             ingredients_list.append(ingredient)
         return ingredients
 
-    def set_ingredients(self, recipe, ingredients):
+    @staticmethod
+    def __set_ingredients(recipe, ingredients):
         IngredientInRecipe.objects.bulk_create(
             [IngredientInRecipe(
                 amount=ingredient.pop('amount'),
@@ -184,14 +185,14 @@ class RecipeSerializer(RecipeReadSerializer):
         ingredients = validated_data.pop('ingredients')
         recipe = Recipe.objects.create(**validated_data)
         recipe.tags.set(tags)
-        self.set_ingredients(recipe, ingredients)
+        self.__set_ingredients(recipe, ingredients)
         return recipe
 
     def update(self, recipe, validated_data):
         ingredients = validated_data.pop('ingredients')
         recipe = super().update(recipe, validated_data)
         recipe.ingredients.clear()
-        self.set_ingredients(recipe, ingredients)
+        self.__set_ingredients(recipe, ingredients)
         recipe.save()
         return recipe
 
