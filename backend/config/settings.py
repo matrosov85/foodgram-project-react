@@ -14,12 +14,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'^/api/.*$'
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_URLS_REGEX = r'^/api/.*$'
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost/*',
-    'http://158.160.109.96',
+    'http://foodgram.freedynamicdns.net/',
 ]
 
 INSTALLED_APPS = [
