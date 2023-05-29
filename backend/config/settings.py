@@ -16,14 +16,17 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '158.160.100.151',
-    'http://foodgram.freedynamicdns.net'
+    'http://foodgram.freedynamicdns.net',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://*.freedynamicdns.net',
+    '127.0.0.1',
+    'localhost',
+    '158.160.100.151',
+    'http://foodgram.freedynamicdns.net',
 ]
 
 INSTALLED_APPS = [
