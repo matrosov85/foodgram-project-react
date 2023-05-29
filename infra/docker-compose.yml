@@ -6,7 +6,7 @@ services:
     volumes:
       - db_value:/var/libs/postgres/data
     env_file:
-      - ../.env
+      - ./.env
 
   backend:
     image: matrosov85/foodgram_backend:v1
@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ../.env
+      - ./.env
 
   frontend:
     image: matrosov85/foodgram_frontend:v1

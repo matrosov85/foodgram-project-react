@@ -12,15 +12,11 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='secret_key')
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'backend'
-]
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost/*',
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://localhost/*',
+# ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -77,7 +73,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME', default='postgres'),
         'USER': os.getenv('POSTGRES_USER', default='postgres'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
-        'HOST': os.getenv('DB_HOST'),#, default='localhost'),
+        'HOST': os.getenv('DB_HOST', default='db'),
         'PORT': os.getenv('DB_PORT', default=5432)
     }
 }
@@ -141,7 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'^/api/.*$'
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_URLS_REGEX = r'^/api/.*$'
 
 LIMIT_QUERY_PARAM = 'recipes_limit'
