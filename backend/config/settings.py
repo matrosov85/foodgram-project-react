@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='secret_key')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://foodgram.freedynamicdns.net/']
 
 # CORS_ORIGIN_ALLOW_ALL = True
 # CORS_URLS_REGEX = r'^/api/.*$'
