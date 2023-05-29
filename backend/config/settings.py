@@ -17,10 +17,9 @@ ALLOWED_HOSTS = ['*']
 # CORS_ORIGIN_ALLOW_ALL = True
 # CORS_URLS_REGEX = r'^/api/.*$'
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'http://localhost/*',
-#     'http://foodgram.freedynamicdns.net/*',
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    'http://foodgram.freedynamicdns.net/*',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
