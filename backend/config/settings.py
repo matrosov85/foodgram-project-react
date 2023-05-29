@@ -12,22 +12,13 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='secret_key')
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '158.160.100.151',
-    'http://foodgram.freedynamicdns.net',
-]
+ALLOWED_HOSTS = ['*']
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'^/api/.*$'
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', default='http://localhost')
 
-CSRF_TRUSTED_ORIGINS = [
-    '127.0.0.1',
-    'localhost',
-    '158.160.100.151',
-    'http://foodgram.freedynamicdns.net',
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://foodgram.freedynamicdns.net',
+# ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
