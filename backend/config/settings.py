@@ -16,7 +16,7 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost/*',
-    'http://158.160.109.96'
+    'http://158.160.109.96',
 ]
 
 INSTALLED_APPS = [
@@ -137,5 +137,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/.*$'
 
 LIMIT_QUERY_PARAM = 'recipes_limit'
