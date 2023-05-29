@@ -16,6 +16,7 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost/*',
+    'http://158.160.109.96'
 ]
 
 INSTALLED_APPS = [
