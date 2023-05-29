@@ -18,7 +18,7 @@ ALLOWED_HOSTS = ['*']
 # CORS_URLS_REGEX = r'^/api/.*$'
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://foodgram.freedynamicdns.net/*',
+    'http://foodgram.freedynamicdns.net',
 ]
 
 INSTALLED_APPS = [
