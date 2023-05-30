@@ -71,7 +71,7 @@ docker-compose exec backend python manage.py collectstatic --no-input
 ```bash
 docker-compose stop
 ```
-
+ 
 ## Примеры запросов к API
 
 ### Получение списка всех рецептов
