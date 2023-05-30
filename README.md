@@ -13,10 +13,9 @@
 # Продуктовый помощник
 На этом сервисе пользователи могут публиковать рецепты, подписываться на публикации других пользователей, добавлять понравившиеся рецепты в список «Избранное», а перед походом в магазин скачивать сводный список продуктов, необходимых для приготовления одного или нескольких выбранных блюд.
 
-## Проект развернут по адресу:
-* http://foodgram.freedynamicdns.net/
-* http://foodgram.freedynamicdns.net/admin/
-* http://foodgram.freedynamicdns.net/api/docs/
+* [Проект](http://foodgram.freedynamicdns.net/)
+* [Панель администратора](http://foodgram.freedynamicdns.net/admin/) (Логин: admin | Пароль: admin)
+* [Документация](http://foodgram.freedynamicdns.net/api/docs/)
 
 
 ## Установка и запуск проекта
@@ -33,13 +32,12 @@ python -m venv venv && . venv/scripts/activate
 
 * Обновить менеджер пакетов и установить зависимости:
 ```bash
-python -m pip install --upgrade pip && pip install -r requirements.txt
+python -m pip install --upgrade pip && pip install -r backend/requirements.txt
 ```
 
 * В папке `infra` Cоздать файл `.env` со следующим содержимым:
 ```bash
 SECRET_KEY=<secret_key>
-CSRF_TRUSTED_ORIGINS=http://<host>
 DB_ENGINE=django.db.backends.postgresql 
 DB_NAME=postgres 
 POSTGRES_USER=postgres 
