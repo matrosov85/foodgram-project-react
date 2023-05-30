@@ -170,6 +170,12 @@ class RecipeSerializer(RecipeReadSerializer):
             ingredients_list.append(ingredient)
         return ingredients
 
+    def validate_cooking_time(self, cooking_time):
+        if not cooking_time:
+            raise ValidationError('Обязательное поле')
+        if  360 < cooking_time < 1:
+            raise ValidationError('Некорректное время приготовления')
+
     @staticmethod
     def __set_ingredients(recipe, ingredients):
         IngredientInRecipe.objects.bulk_create(

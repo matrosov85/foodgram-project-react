@@ -51,9 +51,8 @@ DB_PORT=5432
 cd infra && docker-compose up -d --build
 ```
 
-* Создать и выполнить миграции:
+* Применить миграции:
 ```bash
-docker-compose exec backend python manage.py makemigrations
 docker-compose exec backend python manage.py migrate
 ```
 
@@ -71,7 +70,7 @@ docker-compose exec backend python manage.py collectstatic --no-input
 ```bash
 docker-compose stop
 ```
- 
+
 ## Примеры запросов к API
 
 ### Получение списка всех рецептов
