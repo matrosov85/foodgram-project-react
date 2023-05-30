@@ -16,10 +16,6 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', default='http://localhost')
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'http://foodgram.freedynamicdns.net',
-# ]
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
